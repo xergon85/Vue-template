@@ -1,9 +1,42 @@
-<script type="text/ecmascript-6">
+<script>
+    import lang from '../lang/sv'
     export default {
-        methods: {
-            trans(string) {
-                return string
+        data: function(){
+            return {
+                lang: lang
             }
+        },
+        methods: {
+            trans: function (string) {
+                var scope = string.split('.')[0];
+                var word = string.split('.')[1];
+
+                if (this.lang && this.lang[scope] && this.lang[scope][word])
+                    return this.lang[scope][word];
+                else {
+                    console.log('MISSING LANG for: ' + string)
+                    console.log(scope)
+                    return string; // Fallback
+                }
+
+            },
+            trans_choice: function(string, num) {
+                var scope = string.split('.')[0];
+                var word = string.split('.')[1];
+
+                if (this.lang && this.lang[scope] && this.lang[scope][word])
+                    return this.lang[scope][word].split('|')[num-1];
+                else {
+                    console.log("MISSING LANG for: " + string);
+                    console.log(scope)
+                    return string; // Fallback
+                }
+
+            },
+        },
+        created() {
+            //if(localStorage.lang)
+            //    this.lang = JSON.parse(localStorage.getItem('lang'));
         }
-    }
+    };
 </script>

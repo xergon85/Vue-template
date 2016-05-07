@@ -9,6 +9,10 @@ export const showMsg = ({dispatch}, content,type='error') => {
     dispatch(types.SHOW_MSG, {content:content,type:type})
 }
 
+export const hideMsg = ({dispatch}) => {
+    dispatch(types.HIDE_MSG)
+}
+
 export const getCaptchaUrl = ({dispatch}) => {
     dispatch(types.GET_CAPTCHAURL)
 }
@@ -44,7 +48,7 @@ export const localLogin = (store, userInfo) => {
         store.router.go({path: '/'})
     }, response => {
         getCaptchaUrl(store)
-        showMsg(store, response.data.error_msg ||_trans('auth.login_failed'))
+        showMsg(store, response.data.error_msg || trans('auth.login_failed'))
     })
 }
 

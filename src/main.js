@@ -3,7 +3,13 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueValidator from 'vue-validator'
 
+// Import the router/store sync
 import { sync } from 'vuex-router-sync'
+
+// Import 3rd party JS libs
+window.$ = window.jQuery = require('jquery')
+var bootstrap = require('bootstrap-sass');
+var _ = require('underscore')
 
 // Import the shared store
 import store from './vuex/store'
