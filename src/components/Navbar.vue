@@ -40,7 +40,7 @@
                        data-toggle="dropdown" role="button"
                        aria-expanded="false"
                     >
-                        {{ auth.user }} <span class="caret"></span>
+                        {{ auth.user.name }} <span class="caret"></span>
                     </a>
 
     				<ul class="dropdown-menu" role="menu">

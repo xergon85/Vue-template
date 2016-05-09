@@ -18,7 +18,7 @@ const mutations = {
         state.token = action.token
     },
     [USERINFO_SUCCESS](state, action) {
-        state.user = action.user
+        state.user = action.user.user
     },
     [USERINFO_FAILURE](state, action) {
         state.user = null

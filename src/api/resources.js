@@ -13,6 +13,8 @@ Vue.http.interceptors.push({
         request.headers = request.headers || {}
         if(getCookie('token')) {
             request.headers.Authorization = 'Bearer ' + getCookie('token').replace(/(^\")|(\"$)/g, '')
+        } else {
+            console.log('Cookie missing?!')
         }
         return request
     },

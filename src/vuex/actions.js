@@ -13,42 +13,27 @@ export const hideMsg = ({dispatch}) => {
     dispatch(types.HIDE_MSG)
 }
 
-export const getCaptchaUrl = ({dispatch}) => {
-    dispatch(types.GET_CAPTCHAURL)
-}
-
-export const logout = ({ dispatch, router}) => {
+export const logout = ({ dispatch, router}, store) => {
     signOut()
     router.go({path: '/'})
     dispatch(types.LOGOUT_USER)
 }
 
-export const getSnsLogins = ({ dispatch }) => {
-    api.getSnsLogins().then(response => {
-        if(!response.ok) {
-            return dispatch(types.FAILURE_GET_SNSLOGINS)
-        }
-        dispatch(types.SUCCESS_GET_SNSLOGINS, response.data.data)
-    }, response => {
-        dispatch(types.FAILURE_GET_SNSLOGINS)
-    })
-}
-
 export const localLogin = (store, userInfo) => {
+    console.log('Logging in:')
     api.localLogin(userInfo).then(response => {
         if(!response.ok) {
-            getCaptchaUrl(store)
-            return showMsg(store, response.data.error_msg || trans('auth.login_failed'))
+            return showMsg(store, response.data.error_msg || 'auth.login_failed')
         }
         const token = response.data.token
+        console.log('Settings token: ', token)
         saveCookie('token', token)
         getUserInfo(store)
         store.dispatch(types.LOGIN_SUCCESS, {token: token})
-        showMsg(store, trans('auth.login_success', {token: token}))
+        showMsg(store, 'auth.login_success', {token: token})
         store.router.go({path: '/'})
     }, response => {
-        getCaptchaUrl(store)
-        showMsg(store, response.data.error_msg || trans('auth.login_failed'))
+        showMsg(store, response.data.error_msg || 'auth.login_failed')
     })
 }
 
@@ -66,11 +51,11 @@ export const getUserInfo = ({ dispatch }) => {
 export const updateUser = (store, userInfo) => {
     api.mdUser(userInfo).then(response => {
         if(!response.ok) {
-            return showMsg(store, trans('auth.user_update_failed'))
+            return showMsg(store, 'auth.user_update_failed')
         }
         store.dispatch(types.UPDATE_USER_SUCCESS, {user: response.data.data})
-        showMsg(store, trans('auth.user_update_success'))
+        showMsg(store, 'auth.user_update_success')
     }, response => {
-        showMsg(store, trans('auth.user_update_failed'))
+        showMsg(store, 'auth.user_update_failed')
     })
 }
