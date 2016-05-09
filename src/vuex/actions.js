@@ -15,7 +15,7 @@ export const hideMsg = ({dispatch}) => {
 
 export const logout = ({ dispatch, router}, store) => {
     signOut()
-    router.go({path: '/'})
+    router.go({path: '/login'})
     dispatch(types.LOGOUT_USER)
 }
 

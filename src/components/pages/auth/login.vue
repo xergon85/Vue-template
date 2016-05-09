@@ -56,7 +56,7 @@
 
 <script type="text/ecmascript-6">
     // Import login action, if using other auth method import that action aswell
-    import { localLogin } from '../../vuex/actions'
+    import { localLogin } from '../../../vuex/actions'
 
     export default {
         el() {
