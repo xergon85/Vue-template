@@ -8,3 +8,8 @@ export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS'
 // Alert
 export const SHOW_MSG = 'SHOW_MSG'
 export const HIDE_MSG = 'HIDE_MSG'
+
+// USERS
+export const REQUEST_USERS = 'REQUEST_USERS'
+export const SUCCESS_ADD_USER = 'SUCCESS_ADD_USER'
+export const GET_USERS_FAILURE = 'GET_USERS_FAILURE'

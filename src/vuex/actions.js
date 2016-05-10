@@ -13,12 +13,27 @@ export const hideMsg = ({dispatch}) => {
     dispatch(types.HIDE_MSG)
 }
 
+
+// AUTH ACTIONS
+
+/**
+ *
+ * @param dispatch
+ * @param router
+ * @param store
+ */
 export const logout = ({ dispatch, router}, store) => {
     signOut()
     router.go({path: '/'})
     dispatch(types.LOGOUT_USER)
 }
 
+/**
+ * Login the user, get the user info and save them in the auth store.
+ *
+ * @param store
+ * @param userInfo
+ */
 export const localLogin = (store, userInfo) => {
     console.log('Logging in:')
     api.localLogin(userInfo).then(response => {
@@ -36,6 +51,11 @@ export const localLogin = (store, userInfo) => {
     })
 }
 
+/**
+ * Get the userinfo from the API
+ *
+ * @param dispatch
+ */
 export const getUserInfo = ({ dispatch }) => {
     api.getMe().then(response => {
         if(!response.ok) {
@@ -47,6 +67,12 @@ export const getUserInfo = ({ dispatch }) => {
     })
 }
 
+/**
+ * Update the user
+ *
+ * @param store
+ * @param userInfo
+ */
 export const updateUser = (store, userInfo) => {
     api.mdUser(userInfo).then(response => {
         if(!response.ok) {
@@ -56,5 +82,18 @@ export const updateUser = (store, userInfo) => {
         showMsg(store, 'auth.user_update_success')
     }, response => {
         showMsg(store, 'auth.user_update_failed')
+    })
+}
+
+// USER ACTIONS
+
+export const getUsers = ({ dispatch }) => {
+    api.getUsers().then(response => {
+        if(!response.ok) {
+            return dispatch(types.GET_USERS_FAILURE)
+        }
+        dispatch(types.REQUEST_USERS, { users: response.data.user})
+    }, response => {
+        dispatch(types.GET_USERS_FAILURE)
     })
 }

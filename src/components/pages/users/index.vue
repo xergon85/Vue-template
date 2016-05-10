@@ -2,42 +2,37 @@
     <div class="panel-heading">
         {{ trans('users.archive') }}
     </div>
-
-    <div class="panel-body" v-if="screengroups.length == 0">
-        You have no users
+    <div class="panel-body">
+        <!-- <button class="btn btn-primary" v-on="click: fetch">Fetch</button> -->
+        <table class="table table-bordered" v-if="user">
+            <tr>
+                <th>{{ trans('general.id') }}</th>
+                <th>{{ trans('general.name') }}</th>
+                <th>{{ trans('general.email') }}</th>
+                <th>{{ trans('auth.role') }}</th>
+                <th>{{ trans('general.action') }}</th>
+            </tr>
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+                    <span v-for="role in user.role">{{ role }}</span>
+                </td>
+                <td>
+                    actions
+                </td>
+            </tr>
+        </table>
     </div>
-
-    <table class="table" v-if=" ! $loadingRouteData && screengroups.length > 0">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Age</th>
-            <th width="120px">Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr v-for="screengroup in screengroups">
-            <td>{{ screengroup.id }}</td>
-            <td>{{ screengroup.name }}</td>
-            <td>{{ screengroup.age }}</td>
-            <td>
-                <a class="btn btn-primary btn-xs" v-link="{ path: '/screengroups/'+screengroup.id }">Edit</a>
-                <a class="btn btn-primary btn-xs" v-on:click="deleteScreengroup($index)">Delete</a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
 </template>
+
 <script type="text/ecmascript-6">
-    import { getUserList } from '../../../vuex/getters'
+    import { getUsers } from '../../../vuex/actions'
     export default {
         vuex: {
             getters: {
-
-            },
-            actions: {
-
+                users: getUsers
             }
         }
     }
