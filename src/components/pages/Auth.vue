@@ -45,11 +45,12 @@
 </template>
 
 <script type="text/ecmascript-6">
+    import { getAuthObject } from '../../vuex/getters'
 
     export default {
         vuex: {
             getters: {
-                auth: state => state.auth
+                auth: getAuthObject
             }
         },
         computed: {

@@ -57,6 +57,7 @@
 <script type="text/ecmascript-6">
     // Import login action, if using other auth method import that action aswell
     import { localLogin } from '../../../vuex/actions'
+    import { getAuthObject } from '../../../vuex/getters'
 
     export default {
         el() {
@@ -67,7 +68,7 @@
         },
         vuex: {
             getters: {
-                token: ({ auth }) => auth.token
+                token: ({ getAuthObject }) => token
             },
             actions: {
                 localLogin
