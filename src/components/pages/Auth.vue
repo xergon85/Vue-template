@@ -12,17 +12,17 @@
                         <ul class="nav app-tabs-stacked">
                             <li v-if="!isLoggedIn">
                                 <a v-link="{ name: 'login' }">
-                                    <i class="fa fa-btn fa-fw fa-sign-in"></i>&nbsp;Sign in</span>
+                                    <i class="fa fa-btn fa-fw fa-sign-in"></i>&nbsp;{{ trans('auth.login') }}</span>
                                 </a>
                             </li>
                             <li v-if="!isLoggedIn">
                                 <a v-link="{ name: 'register' }">
-                                    <i class="fa fa-btn fa-fw fa-chevron-circle-up"></i>&nbsp;Register</span>
+                                    <i class="fa fa-btn fa-fw fa-chevron-circle-up"></i>&nbsp;{{ trans('auth.register') }}</span>
                                 </a>
                             </li>
                             <li v-if="isLoggedIn">
                                 <a v-link="{ name: 'profile' }">
-                                    <i class="fa fa-btn fa-fw fa-user"></i>&nbsp;My Profile</span>
+                                    <i class="fa fa-btn fa-fw fa-user"></i>&nbsp;{{ trans('auth.profile') }} </span>
                                 </a>
                             </li>
                         </ul>

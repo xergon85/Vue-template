@@ -15,7 +15,7 @@ export const hideMsg = ({dispatch}) => {
 
 export const logout = ({ dispatch, router}, store) => {
     signOut()
-    router.go({path: '/login'})
+    router.go({path: '/'})
     dispatch(types.LOGOUT_USER)
 }
 
@@ -26,7 +26,6 @@ export const localLogin = (store, userInfo) => {
             return showMsg(store, response.data.error_msg || 'auth.login_failed')
         }
         const token = response.data.token
-        console.log('Settings token: ', token)
         saveCookie('token', token)
         getUserInfo(store)
         store.dispatch(types.LOGIN_SUCCESS, {token: token})

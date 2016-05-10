@@ -32,6 +32,21 @@ export default function (router) {
                 }
             }
         },
+        '/users': {
+            component: require('./components/pages/Users.vue'),
+            subRoutes: {
+                '/index': {
+                    name: 'users',
+                    component: require('./components/pages/users/index.vue'),
+                    auth: true
+                },
+                '/create': {
+                    name: 'create_user',
+                    component: require('./components/pages/users/create.vue'),
+                    auth: true
+                }
+            }
+        },
         
         
         '*': {
