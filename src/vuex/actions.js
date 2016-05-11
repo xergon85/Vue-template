@@ -5,6 +5,18 @@ import api from '../api'
 import * as types from './types'
 import { saveCookie, signOut } from '../utils/authService'
 
+/**
+ * Simple method for creating actions that just passes the action to the mutators.
+ * Example of usage:
+ * "export const addTask = makeAction('ADD_TASK')"
+ * @param type
+ * @returns {function(): *}
+ */
+function makeAction (type) {
+    return ({ dispatch }, ...args) => dispatch(type, ...args)
+}
+
+// ALERT ACTIONS
 export const showMsg = ({dispatch}, content,type='error') => {
     dispatch(types.SHOW_MSG, {content:content,type:type})
 }
@@ -61,7 +73,7 @@ export const getUserInfo = ({ dispatch }) => {
         if(!response.ok) {
             return dispatch(types.USERINFO_FAILURE)
         }
-        dispatch(types.USERINFO_SUCCESS, { user: response.data})
+        dispatch(types.USERINFO_SUCCESS, { user: response.data.user})
     }, response => {
         dispatch(types.USERINFO_FAILURE)
     })
