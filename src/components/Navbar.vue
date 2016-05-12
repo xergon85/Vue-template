@@ -26,7 +26,9 @@
                     <template v-show="isLoggedIn">
                         <li><a v-link="{ name: 'welcome' }">{{ trans('general.home') }}</a></li>
                     </template>
-                    <li></li>
+                    <template v-show="isAdmin">
+                        <li><a v-link="{ name: 'users' }">{{ trans('users.model') }}</a></li>
+                    </template>
                 </ul>
 
                 <!-- Right side of navbar-->
@@ -65,6 +67,7 @@
 
 <script type="text/ecmascript-6">
     import { logout, getUserInfo } from '../vuex/actions'
+    import { isAdmin } from '../vuex/getters'
     export default {
         data() {
             return {
@@ -73,7 +76,8 @@
         },
         vuex: {
             getters: {
-                auth: state => state.auth
+                auth: state => state.auth,
+                isAdmin: isAdmin
             },
             actions: {
                 logout,
@@ -88,6 +92,9 @@
         computed: {
             isLoggedIn() {
                 return this.auth.token !== null;
+            },
+            isAdmin() {
+
             }
         }
     }
