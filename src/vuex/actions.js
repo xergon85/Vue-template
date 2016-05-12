@@ -99,7 +99,7 @@ export const updateUser = (store, userInfo) => {
 
 // USER ACTIONS
 
-export const getUsers = ({ dispatch }) => {
+export const fetchUsers = () => {
     api.getUsers().then(response => {
         if(!response.ok) {
             return dispatch(types.GET_USERS_FAILURE)

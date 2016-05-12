@@ -23,10 +23,11 @@
                     <li><a v-link="{ name: 'welcome' }">{{trans('general.home') }}</a></li>
 
                     <!-- Menu items hidden by scopes -->
-                    <template v-show="isLoggedIn">
-                        <li><a v-link="{ name: 'welcome' }">{{ trans('general.home') }}</a></li>
+                    <template v-if="isLoggedIn">
+                        <!-- <li><a v-link="{ name: 'welcome' }">{{ trans('general.home') }}</a></li> -->
                     </template>
-                    <template v-show="isAdmin">
+
+                    <template v-if="isAdmin">
                         <li><a v-link="{ name: 'users' }">{{ trans('users.model') }}</a></li>
                     </template>
                 </ul>
@@ -67,7 +68,7 @@
 
 <script type="text/ecmascript-6">
     import { logout, getUserInfo } from '../vuex/actions'
-    import { isAdmin } from '../vuex/getters'
+    import { isAdmin, getAuthObject, isLoggedIn } from '../vuex/getters'
     export default {
         data() {
             return {
@@ -76,8 +77,9 @@
         },
         vuex: {
             getters: {
-                auth: state => state.auth,
-                isAdmin: isAdmin
+                auth: getAuthObject,
+                isAdmin: isAdmin,
+                isLoggedIn: isLoggedIn
             },
             actions: {
                 logout,
@@ -87,14 +89,6 @@
         created() {
             if(this.isLoggedIn) {
                 this.getUserInfo()
-            }
-        },
-        computed: {
-            isLoggedIn() {
-                return this.auth.token !== null;
-            },
-            isAdmin() {
-
             }
         }
     }

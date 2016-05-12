@@ -28,12 +28,18 @@
 </template>
 
 <script type="text/ecmascript-6">
-    import { getUsers } from '../../../vuex/actions'
+    import { fetchUsers } from '../../../vuex/actions'
     export default {
         vuex: {
-            getters: {
-                users: getUsers
+            actions: {
+                users: fetchUsers
+            }
+        },
+        route: {
+            data() {
+                fetchUsers();
             }
         }
     }
+
 </script>
