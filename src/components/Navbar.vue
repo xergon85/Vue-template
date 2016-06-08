@@ -72,7 +72,7 @@
     export default {
         data() {
             return {
-                navTitle: 'Pixbo'
+                navTitle: 'X'
             }
         },
         vuex: {

@@ -28,7 +28,9 @@ export default function (router) {
                     auth: true
                 },
                 '/register': {
-                    name: 'register'
+                    name: 'register',
+                    component: require('./components/pages/auth/Register.vue'),
+                    auth: false
                 }
             }
         },
