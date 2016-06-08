@@ -20,7 +20,7 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
                     <!-- Global menu items -->
-                    <li><a v-link="{ name: 'welcome' }">{{trans('general.home') }}</a></li>
+                    <li><a v-link="{ name: 'home.welcome' }">{{trans('general.home') }}</a></li>
 
                     <!-- Menu items hidden by scopes -->
                     <template v-if="isLoggedIn">
@@ -28,14 +28,14 @@
                     </template>
 
                     <template v-if="isAdmin">
-                        <li><a v-link="{ name: 'users' }">{{ trans('users.model') }}</a></li>
+                        <li><a v-link="{ name: 'users.index' }">{{ trans('users.model') }}</a></li>
                     </template>
                 </ul>
 
                 <!-- Right side of navbar-->
                 <ul class="nav navbar-nav navbar-right">
                     <li v-if="!(auth.token && auth.user)">
-                        <a v-link="{ name: 'login', activeClass:'active' }">{{ trans('auth.login') }}</a>
+                        <a v-link="{ name: 'auth.login', activeClass:'active' }">{{ trans('auth.login') }}</a>
                     </li>
 
                     <li v-if="auth.token && auth.user" class="dropdown">
@@ -50,7 +50,7 @@
                             <!-- Settings -->
                             <li class="dropdown-header">{{ trans('general.settings') }}</li>
                             <li>
-                                <a v-link="{ name: 'profile' }">
+                                <a v-link="{ name: 'auth.profile' }">
                                     <i class="fa fa-btn fa-fw fa-user"></i>{{ trans('auth.profile') }}
                                 </a>
                             </li>

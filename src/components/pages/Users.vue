@@ -10,12 +10,12 @@
                     <div class="app-tabs">
                         <ul class="nav app-tabs-stacked">
                             <li >
-                                <a v-link="{ path: '/users/index' }">
+                                <a v-link="{ name: 'users.index' }">
                                     <span><i class="fa fa-btn fa-fw fa-list"></i>&nbsp;{{ trans('general.archive') }}</span>
                                 </a>
                             </li>
                             <li >
-                                <a v-link="{ path: '/users/create' }">
+                                <a v-link="{ name: 'users.create' }">
                                     <i class="fa fa-btn fa-fw fa-plus"></i>&nbsp;{{ trans('general.new') }}</span>
                                 </a>
                             </li>

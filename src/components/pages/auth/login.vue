@@ -7,16 +7,13 @@
         {{ trans('auth.login_message') }}
     </div>
     <div class="panel-body">
-        <validator name="signinValidation">
-        <form class="form-horizontal" @submit.prevent="login($signinValidation)" novalidate>
+        <form class="form-horizontal" v-on:submit.prevent="login">
 
             <div class="form-group">
                 <label class="col-md-4 control-label">{{ trans('auth.email') }}</label>
                 <div class="col-md-6">
                     <input v-model="user.email"
-                           v-validate:email="{ required: true, minlength: 3, maxlength: 30, email: true }"
                            class="form-control"
-                           :class="[$signinValidation.email.invalid ? 'ng-invalid' : 'ng-valid', $signinValidation.email.dirty ? 'ng-dirty' : '']"
                            :placeholder="trans('auth.email')"
                     >
                 </div>
@@ -27,9 +24,7 @@
                 <div class="col-md-6">
                     <input type="password"
                            v-model="user.password"
-                           v-validate:password="{ required: true }"
                            class="form-control"
-                           :class="[$signinValidation.password.invalid ? 'ng-invalid' : 'ng-valid', $signinValidation.password.dirty ? 'ng-dirty' : '']"
                            :placeholder="trans('auth.password')"
                     >
                 </div>
@@ -41,12 +36,11 @@
                 <div class="col-md-6 col-md-offset-4">
                     <button type="submit"
                             class="btn btn-primary"
-                            id="signin_btn"
-                            :disabled="$signinValidation.invalid">
+                            id="signin_btn">
                         <i class="fa fa-btn fa-sign-in"></i>{{ trans('auth.login') }}
                     </button>
 
-                    <a class="btn btn-link" v-link="{ path: '/auth/forgot' }">Forgot Your Password?</a>
+                    <a class="btn btn-link" v-link="{ name: 'auth.forgot' }">{{ trans('auth.forgot') }}</a>
                 </div>
             </div>
         </form>
@@ -74,9 +68,6 @@
                 localLogin
             }
         },
-        validators: {
-            email: val => /^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/.test(val)
-        },
         data() {
             return {
                 user: {
@@ -94,10 +85,8 @@
             // Get login methods, captchas etc
         },
         methods: {
-            login(signinValidation) {
-                if(signinValidation.valid) {
-                    this.localLogin(this.user)
-                }
+            login() {
+                this.localLogin(this.user)
             }
         }
     }
