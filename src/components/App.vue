@@ -21,7 +21,8 @@
         store,
         components: {
             HeaderComponent,
-            Toaster
+            Toaster,
+            FooterComponent
         }
     }
 </script>
