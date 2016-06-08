@@ -10,13 +10,18 @@
                 <div class="app-tabs">
                     <ul class="nav app-tabs-stacked">
                         <li >
-                            <a v-link="{ path: '/home/welcome' }">
+                            <a v-link="{ name: 'home.welcome' }">
                                 <span><i class="fa fa-btn fa-fw fa-list"></i>&nbsp;{{ trans('general.welcome') }}</span>
                             </a>
                         </li>
                         <li >
-                            <a v-link="{ path: '/home/about' }">
+                            <a v-link="{ name: 'home.about' }">
                                 <span><i class="fa fa-btn fa-fw fa-lightbulb-o"></i>&nbsp;{{ trans('general.about') }}</span>
+                            </a>
+                        </li>
+                        <li >
+                            <a v-link="{ name: 'home.terms' }">
+                                <span><i class="fa fa-btn fa-fw fa-lightbulb-o"></i>&nbsp;{{ trans('general.terms') }}</span>
                             </a>
                         </li>
                     </ul>
