@@ -21,7 +21,6 @@ Vue.http.interceptors.push({
     response(response) {
         if(response.status == 401) {
             signOut()
-            window.location.pathname = '/login'
         }
         return response
     }
