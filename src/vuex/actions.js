@@ -73,7 +73,7 @@ export const getUserInfo = ({ dispatch }) => {
         if(!response.ok) {
             return dispatch(types.USERINFO_FAILURE)
         }
-        dispatch(types.USERINFO_SUCCESS, { user: response.data.user})
+        dispatch(types.USERINFO_SUCCESS, { user: response.data.data})
     }, response => {
         dispatch(types.USERINFO_FAILURE)
     })
