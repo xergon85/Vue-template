@@ -10,11 +10,11 @@
         <form class="form-horizontal" v-on:submit.prevent="login">
 
             <div class="form-group">
-                <label class="col-md-4 control-label">{{ trans('auth.email') }}</label>
+                <label class="col-md-4 control-label">{{ trans('auth.name') }}</label>
                 <div class="col-md-6">
-                    <input v-model="user.email"
+                    <input v-model="user.name"
                            class="form-control"
-                           :placeholder="trans('auth.email')"
+                           :placeholder="trans('auth.name')"
                     >
                 </div>
             </div>
@@ -71,7 +71,7 @@
         data() {
             return {
                 user: {
-                    email: '',
+                    name: '',
                     password: '',
                 }
             }
