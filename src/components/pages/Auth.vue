@@ -5,7 +5,7 @@
         <div class="col-md-3">
             <div class="panel panel-default panel-flush">
                 <div class="panel-heading">
-                    Home
+                    {{ trans('auth.home') }}
                 </div>
                 <div class="panel-body">
                     <div class="app-tabs">
