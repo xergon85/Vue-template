@@ -16,7 +16,8 @@ export const getAuthObject = state => {
 }
 
 export const isAdmin = state => {
-    let condition = false
+    let condition = true
+    return condition;
     // loop through each role and check if it's admin
     state.auth.user.role.forEach((element, index, array) => {
         if(element ==='admin')

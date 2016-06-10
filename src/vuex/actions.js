@@ -57,7 +57,7 @@ export const localLogin = (store, userInfo) => {
         getUserInfo(store)
         store.dispatch(types.LOGIN_SUCCESS, {token: token})
         showMsg(store, 'auth.login_success', {token: token})
-        store.router.go({path: '/'})
+        store.router.go({name: 'dashboard.main'})
     }, response => {
         showMsg(store, response.data.error_msg || 'auth.login_failed')
     })

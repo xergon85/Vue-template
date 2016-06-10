@@ -26,11 +26,6 @@ export default function (router) {
                     component: require('./components/pages/auth/login.vue'),
                     guest: true
                 },
-                '/profile': {
-                    name: 'auth.profile',
-                    component: require('./components/pages/auth/Profile.vue'),
-                    auth: true
-                },
                 '/register': {
                     name: 'auth.register',
                     component: require('./components/pages/auth/Register.vue'),
@@ -58,7 +53,21 @@ export default function (router) {
                 }
             }
         },
-        
+        '/dashboard': {
+            component: require('./components/pages/Dashboard.vue'),
+            subRoutes: {
+                '/main': {
+                    name: 'dashboard.main',
+                    component: require('./components/pages/dashboard/main.vue'),
+                    auth: true
+                },
+                '/profile': {
+                    name: 'dashboard.profile',
+                    component: require('./components/pages/dashboard/profile.vue'),
+                    auth: true
+                },
+            }
+        },
         
         '*': {
             component: require('./components/pages/NotFound.vue')

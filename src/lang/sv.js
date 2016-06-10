@@ -8,6 +8,7 @@ const lang = {
         register:                   "Registrera",
         login_message:              "Logga in på ditt konto",
         email:                      "E-mail",
+        name:                       "Användarnamn",
         password:                   "Lösenord",
         forgot:                     "Glömt lösenord?"
     },
@@ -32,6 +33,9 @@ const lang = {
         about_content :             "Vue-js boilerplate",
         terms:                      "Användarvillkor",
         save:                       "Spara"
+    },
+    dashboard: {
+        home:                       "Dashboard"
     }
 }
 

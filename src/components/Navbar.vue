@@ -50,8 +50,8 @@
                             <!-- Settings -->
                             <li class="dropdown-header">{{ trans('general.settings') }}</li>
                             <li>
-                                <a v-link="{ name: 'auth.profile' }">
-                                    <i class="fa fa-btn fa-fw fa-user"></i>{{ trans('auth.profile') }}
+                                <a v-link="{ name: 'dashboard.main' }">
+                                    <i class="fa fa-btn fa-fw fa-cog"></i>{{ trans('dashboard.home') }}
                                 </a>
                             </li>
                             <!-- Logout -->
